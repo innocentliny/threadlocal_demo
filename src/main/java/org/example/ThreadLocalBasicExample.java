@@ -27,11 +27,13 @@ public class ThreadLocalBasicExample {
             threadLocal.set(threadValue);
             try {
                 TimeUnit.SECONDS.sleep(2);
+                System.out.println(threadLocal.get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                threadLocal.remove();
             }
 
-            System.out.println(threadLocal.get());
         });
     }
 }
