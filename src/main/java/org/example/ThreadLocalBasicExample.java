@@ -31,6 +31,10 @@ public class ThreadLocalBasicExample {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
+                /*
+                養成好習慣，ThreadLocal 用完記得移除值，否則搭配 thread pool 使用時，
+                有可能 reuse thread，造成從 thread local 取值時，有非預期的問題，例如舊值、不是屬於此次工作的值...。
+                 */
                 threadLocal.remove();
             }
 
